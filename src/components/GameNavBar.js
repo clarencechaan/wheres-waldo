@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "../styles/GameNavBar.css";
 
 function GameNavBar({ level, remainingKeys }) {
-  console.log(remainingKeys);
   return (
     <nav className="GameNavBar">
       <Link to="/" className="navbar-logo">

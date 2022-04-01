@@ -22,57 +22,56 @@ import level5 from "../images/level5.jpeg";
 import motorcyclist from "../images/motorcyclist.png";
 import mug from "../images/mug.png";
 import statue from "../images/statue.png";
-import uniqid from "uniqid";
 
 const levels = [
   {
-    id: uniqid(),
+    id: 0,
     title: "Level 1",
     imgURL: level1,
     keys: [
-      { title: "PS5 Controller", imgURL: ps5controller, id: uniqid() },
-      { title: "Cat", imgURL: cat, id: uniqid() },
-      { title: "Drink", imgURL: drink, id: uniqid() },
+      { title: "PS5 Controller", imgURL: ps5controller, id: 0 },
+      { title: "Cat", imgURL: cat, id: 1 },
+      { title: "Drink", imgURL: drink, id: 2 },
     ],
   },
   {
-    id: uniqid(),
+    id: 1,
     title: "Level 2",
     imgURL: level2,
     keys: [
-      { title: "Lamp", imgURL: lamp, id: uniqid() },
-      { title: "Plant", imgURL: plant, id: uniqid() },
-      { title: "Toilet", imgURL: toilet, id: uniqid() },
+      { title: "Lamp", imgURL: lamp, id: 0 },
+      { title: "Plant", imgURL: plant, id: 1 },
+      { title: "Toilet", imgURL: toilet, id: 2 },
     ],
   },
   {
-    id: uniqid(),
+    id: 2,
     title: "Level 3",
     imgURL: level3,
     keys: [
-      { title: "Cactus", imgURL: cactus, id: uniqid() },
-      { title: "Coughing Man", imgURL: coughingMan, id: uniqid() },
-      { title: "Squirrel", imgURL: squirrel, id: uniqid() },
+      { title: "Cactus", imgURL: cactus, id: 0 },
+      { title: "Coughing Man", imgURL: coughingMan, id: 1 },
+      { title: "Squirrel", imgURL: squirrel, id: 2 },
     ],
   },
   {
-    id: uniqid(),
+    id: 3,
     title: "Level 4",
     imgURL: level4,
     keys: [
-      { title: "Turtle", imgURL: turtle, id: uniqid() },
-      { title: "Volcano", imgURL: volcano, id: uniqid() },
-      { title: "Wheel", imgURL: wheel, id: uniqid() },
+      { title: "Turtle", imgURL: turtle, id: 0 },
+      { title: "Volcano", imgURL: volcano, id: 1 },
+      { title: "Wheel", imgURL: wheel, id: 2 },
     ],
   },
   {
-    id: uniqid(),
+    id: 4,
     title: "Level 5",
     imgURL: level5,
     keys: [
-      { title: "Motorcyclist", imgURL: motorcyclist, id: uniqid() },
-      { title: "Mug", imgURL: mug, id: uniqid() },
-      { title: "Statue", imgURL: statue, id: uniqid() },
+      { title: "Motorcyclist", imgURL: motorcyclist, id: 0 },
+      { title: "Mug", imgURL: mug, id: 1 },
+      { title: "Statue", imgURL: statue, id: 2 },
     ],
   },
 ];

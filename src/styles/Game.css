@@ -12,8 +12,8 @@
   position: fixed;
   border-radius: 50%;
   border: 3px solid #fdfffc;
-  width: 5.952380952vw;
-  height: 5.952380952vw;
+  width: 6vw;
+  height: 6vw;
   left: 20px;
   right: 0;
   transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease,

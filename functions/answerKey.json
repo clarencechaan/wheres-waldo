@@ -1,0 +1,92 @@
+[
+  {
+    "levelID": 0,
+    "keyID": 0,
+    "xPercent": 0.9020746887966805,
+    "yPercent": 0.5868544600938967
+  },
+  {
+    "levelID": 0,
+    "keyID": 1,
+    "xPercent": 0.2651162790697674,
+    "yPercent": 0.5227397260273973
+  },
+  {
+    "levelID": 0,
+    "keyID": 2,
+    "xPercent": 0.6666666666666666,
+    "yPercent": 0.9468493150684931
+  },
+  {
+    "levelID": 1,
+    "keyID": 0,
+    "xPercent": 0.8527131782945736,
+    "yPercent": 0.3098913664951401
+  },
+  {
+    "levelID": 1,
+    "keyID": 1,
+    "xPercent": 0.4689922480620155,
+    "yPercent": 0.8633504859919954
+  },
+  {
+    "levelID": 1,
+    "keyID": 2,
+    "xPercent": 0.8,
+    "yPercent": 0.46540880503144655
+  },
+  {
+    "levelID": 2,
+    "keyID": 0,
+    "xPercent": 0.710077519379845,
+    "yPercent": 0.4345991561181435
+  },
+  {
+    "levelID": 2,
+    "keyID": 1,
+    "xPercent": 0.2837209302325581,
+    "yPercent": 0.5545509342977697
+  },
+  {
+    "levelID": 2,
+    "keyID": 2,
+    "xPercent": 0.7751937984496124,
+    "yPercent": 0.6696805304400241
+  },
+  {
+    "levelID": 3,
+    "keyID": 0,
+    "xPercent": 0.06511627906976744,
+    "yPercent": 0.8500823723228995
+  },
+  {
+    "levelID": 3,
+    "keyID": 1,
+    "xPercent": 0.27364341085271315,
+    "yPercent": 0.6468973091707853
+  },
+  {
+    "levelID": 3,
+    "keyID": 2,
+    "xPercent": 0.1573643410852713,
+    "yPercent": 0.5326743547501372
+  },
+  {
+    "levelID": 4,
+    "keyID": 0,
+    "xPercent": 0.4728682170542636,
+    "yPercent": 0.9493670886075949
+  },
+  {
+    "levelID": 4,
+    "keyID": 1,
+    "xPercent": 0.06279069767441861,
+    "yPercent": 0.36653824986241057
+  },
+  {
+    "levelID": 4,
+    "keyID": 2,
+    "xPercent": 0.6232558139534884,
+    "yPercent": 0.840946615299945
+  }
+]

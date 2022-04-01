@@ -1,17 +1,12 @@
 import "./styles/App.css";
-import cursor from "./cursor";
 import levels from "./levels/levels";
 import Home from "./components/Home";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import { Routes, Route } from "react-router-dom";
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config.js";
-import { useEffect } from "react";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Initialize Firebase
 const firebaseAppConfig = getFirebaseConfig();

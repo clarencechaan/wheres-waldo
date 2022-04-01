@@ -1,13 +1,16 @@
+let markerCoordsInPercent = { xPercent: 0, yPercent: 0 };
+
 const cursor = () => {
   const circle = document.querySelector(".circle");
   const marker = document.querySelector(".marker");
   const keyDropdown = document.querySelector(".key-dropdown");
-  const gameContent = document.querySelector(".game-content");
-  gameContent.addEventListener("mousemove", mouseMoveHandler);
-  gameContent.addEventListener("mousedown", mouseDownHandler);
-  gameContent.addEventListener("mouseup", mouseUpHandler);
+  const gameImage = document.querySelector(".game-level-img");
+  gameImage.addEventListener("mousemove", mouseMoveHandler);
+  gameImage.addEventListener("mousedown", mouseDownHandler);
+  gameImage.addEventListener("mouseup", mouseUpHandler);
   keyDropdown.addEventListener("mouseover", keyDropdownMouseOver);
   keyDropdown.addEventListener("mouseout", keyDropdownMouseOut);
+  keyDropdown.addEventListener("mouseup", toggleCursor);
 
   function mouseMoveHandler(e) {
     circle.style.left = e.clientX - circle.offsetWidth / 2 + "px";
@@ -22,8 +25,11 @@ const cursor = () => {
     circle.style.transform = "scale(1.5)";
 
     toggleCursor(e);
-
     ensureValidDropdownPosition();
+
+    if (!marker.hidden) {
+      setMarkerCoordsInPercent(e);
+    }
   }
 
   // switch to/from cursor and dropdown
@@ -76,6 +82,12 @@ const cursor = () => {
     circle.style.left = e.clientX - circle.offsetWidth / 2 + "px";
     circle.style.top = e.clientY - circle.offsetHeight / 2 + "px";
   }
+
+  function setMarkerCoordsInPercent(event) {
+    const xPercent = event.offsetX / gameImage.offsetWidth;
+    const yPercent = event.offsetY / gameImage.offsetHeight;
+    markerCoordsInPercent = { xPercent, yPercent };
+  }
 };
 
-export default cursor;
+export { cursor, markerCoordsInPercent };
