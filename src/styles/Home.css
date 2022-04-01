@@ -1,0 +1,22 @@
+.level-previews-container {
+  display: flex;
+  column-gap: 24px;
+}
+
+.level-preview-img {
+  width: 250px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.level-preview-img:hover {
+  transform: scale(1.03);
+}
+
+.level-preview-title {
+  text-align: center;
+}

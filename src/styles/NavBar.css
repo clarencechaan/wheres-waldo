@@ -1,0 +1,17 @@
+.navbar-logo {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 50px;
+  margin-left: 50px;
+}
+
+.nav-link {
+  font-family: "Staatliches", cursive;
+  font-size: 30px;
+  margin-left: 50px;
+  padding: 5px 13px;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  background-color: rgb(45, 45, 45);
+}

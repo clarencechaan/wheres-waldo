@@ -1,0 +1,32 @@
+.game-info {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.game-nav-bar-level-title {
+  font-size: 30px;
+  color: rgb(173, 173, 173);
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  margin-left: 40px;
+}
+
+.key-img {
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid white;
+}
+
+.key:hover {
+  transform: scale(3) translateY(20px);
+}
+
+.key-title {
+  color: white;
+}

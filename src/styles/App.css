@@ -1,0 +1,51 @@
+.App,
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  background-color: rgb(45, 45, 45);
+  font-family: "Staatliches", cursive;
+}
+
+.Game,
+.Home,
+.Leaderboard {
+  width: 100vw;
+}
+
+.home-content,
+.game-content,
+.leaderboard-content {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-title,
+.game-title,
+.leaderboard-title {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.NavBar,
+.GameNavBar {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 80px;
+  background-color: rgb(33, 33, 33);
+  position: fixed;
+}
+
+.NavBar > *,
+.GameNavBar > * {
+  color: white;
+  text-decoration: none;
+}
