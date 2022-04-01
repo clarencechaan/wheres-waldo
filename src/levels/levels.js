@@ -30,9 +30,9 @@ const levels = [
     title: "Level 1",
     imgURL: level1,
     keys: [
-      { title: "PS5 Controller", imgURL: ps5controller },
-      { title: "Cat", imgURL: cat },
-      { title: "Drink", imgURL: drink },
+      { title: "PS5 Controller", imgURL: ps5controller, id: uniqid() },
+      { title: "Cat", imgURL: cat, id: uniqid() },
+      { title: "Drink", imgURL: drink, id: uniqid() },
     ],
   },
   {
@@ -40,9 +40,9 @@ const levels = [
     title: "Level 2",
     imgURL: level2,
     keys: [
-      { title: "Lamp", imgURL: lamp },
-      { title: "Plant", imgURL: plant },
-      { title: "Toilet", imgURL: toilet },
+      { title: "Lamp", imgURL: lamp, id: uniqid() },
+      { title: "Plant", imgURL: plant, id: uniqid() },
+      { title: "Toilet", imgURL: toilet, id: uniqid() },
     ],
   },
   {
@@ -50,9 +50,9 @@ const levels = [
     title: "Level 3",
     imgURL: level3,
     keys: [
-      { title: "Cactus", imgURL: cactus },
-      { title: "Coughing Man", imgURL: coughingMan },
-      { title: "Squirrel", imgURL: squirrel },
+      { title: "Cactus", imgURL: cactus, id: uniqid() },
+      { title: "Coughing Man", imgURL: coughingMan, id: uniqid() },
+      { title: "Squirrel", imgURL: squirrel, id: uniqid() },
     ],
   },
   {
@@ -60,9 +60,9 @@ const levels = [
     title: "Level 4",
     imgURL: level4,
     keys: [
-      { title: "Turtle", imgURL: turtle },
-      { title: "Volcano", imgURL: volcano },
-      { title: "Wheel", imgURL: wheel },
+      { title: "Turtle", imgURL: turtle, id: uniqid() },
+      { title: "Volcano", imgURL: volcano, id: uniqid() },
+      { title: "Wheel", imgURL: wheel, id: uniqid() },
     ],
   },
   {
@@ -70,9 +70,9 @@ const levels = [
     title: "Level 5",
     imgURL: level5,
     keys: [
-      { title: "Motorcyclist", imgURL: motorcyclist },
-      { title: "Mug", imgURL: mug },
-      { title: "Statue", imgURL: statue },
+      { title: "Motorcyclist", imgURL: motorcyclist, id: uniqid() },
+      { title: "Mug", imgURL: mug, id: uniqid() },
+      { title: "Statue", imgURL: statue, id: uniqid() },
     ],
   },
 ];

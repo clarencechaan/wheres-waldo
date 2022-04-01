@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "../styles/GameNavBar.css";
 
-function GameNavBar({ level }) {
-  console.log(level);
+function GameNavBar({ level, remainingKeys }) {
+  console.log(remainingKeys);
   return (
     <nav className="GameNavBar">
       <Link to="/" className="navbar-logo">
@@ -13,18 +13,19 @@ function GameNavBar({ level }) {
       </Link>
       <div className="game-info">
         <div className="game-nav-bar-level-title">{level.title}</div>
-        <div className="key">
-          <img src={level.keys[0].imgURL} alt="" className="key-img" />
-          <div className="key-title">{level.keys[0].title}</div>
-        </div>
-        <div className="key">
-          <img src={level.keys[1].imgURL} alt="" className="key-img" />
-          <div className="key-title">{level.keys[1].title}</div>
-        </div>
-        <div className="key">
-          <img src={level.keys[2].imgURL} alt="" className="key-img" />
-          <div className="key-title">{level.keys[2].title}</div>
-        </div>
+        {level.keys.map((key) => {
+          return remainingKeys.includes(key) ? (
+            <div className="key" key={key.id}>
+              <img src={key.imgURL} alt="" className="key-img" />
+              <div className="key-title">{key.title}</div>
+            </div>
+          ) : (
+            <div className="key found" key={key.id}>
+              <img src={key.imgURL} alt="" className="key-img" />
+              <div className="key-title">{key.title}</div>
+            </div>
+          );
+        })}
       </div>
     </nav>
   );

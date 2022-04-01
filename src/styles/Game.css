@@ -30,8 +30,29 @@
 .key-dropdown {
   position: absolute;
   width: 150px;
-  height: 200px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
+  overflow: hidden;
+}
+
+.keys-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+.key-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-family: "Staatliches", cursive;
+  font-size: 20px;
   cursor: pointer;
+  height: 67px;
+}
+
+.key-btn:hover {
+  background-color: rgba(255, 255, 255, 0.35);
 }

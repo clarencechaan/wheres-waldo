@@ -12,7 +12,6 @@ const cursor = () => {
   function mouseMoveHandler(e) {
     circle.style.left = e.clientX - circle.offsetWidth / 2 + "px";
     circle.style.top = e.clientY - circle.offsetHeight / 2 + "px";
-    // circle.style.opacity = 1;
   }
 
   function mouseUpHandler(e) {
@@ -22,6 +21,13 @@ const cursor = () => {
   function mouseDownHandler(e) {
     circle.style.transform = "scale(1.5)";
 
+    toggleCursor(e);
+
+    ensureValidDropdownPosition();
+  }
+
+  // switch to/from cursor and dropdown
+  function toggleCursor(e) {
     if (marker.hidden) {
       marker.hidden = false;
       marker.style.left =
@@ -39,6 +45,25 @@ const cursor = () => {
       keyDropdown.style.top = e.clientY + window.pageYOffset + "px";
     } else {
       keyDropdown.hidden = true;
+    }
+  }
+
+  // prevent dropdown from going off screen
+  function ensureValidDropdownPosition() {
+    if (
+      keyDropdown.offsetTop + keyDropdown.offsetHeight >
+      document.body.scrollHeight
+    ) {
+      keyDropdown.style.top =
+        document.body.scrollHeight - keyDropdown.offsetHeight + "px";
+    }
+
+    if (
+      keyDropdown.offsetLeft + keyDropdown.offsetWidth >
+      document.body.scrollWidth
+    ) {
+      keyDropdown.style.left =
+        document.body.scrollWidth - keyDropdown.offsetWidth + "px";
     }
   }
 

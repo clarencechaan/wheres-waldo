@@ -14,6 +14,17 @@
   align-items: center;
   transition: 0.3s;
   margin-left: 40px;
+  background-color: rgb(33, 33, 33);
+}
+
+.key:hover {
+  transform: scale(3) translateY(20px);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.key.found > * {
+  filter: grayscale(100%) brightness(40%);
 }
 
 .key-img {
@@ -21,10 +32,6 @@
   border-radius: 50%;
   margin-right: 10px;
   border: 2px solid white;
-}
-
-.key:hover {
-  transform: scale(3) translateY(20px);
 }
 
 .key-title {
