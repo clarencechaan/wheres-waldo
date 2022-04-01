@@ -5,3 +5,33 @@
 .game-content {
   cursor: none;
 }
+
+/* cursor */
+.circle,
+.marker {
+  position: fixed;
+  border-radius: 50%;
+  border: 3px solid #fdfffc;
+  width: 100px;
+  height: 100px;
+  left: 20px;
+  right: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.marker {
+  position: absolute;
+  border: 3px dotted #fdfffc;
+}
+
+.key-dropdown {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  cursor: pointer;
+}

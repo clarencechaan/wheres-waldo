@@ -15,6 +15,8 @@ function Game() {
       <GameNavBar level={level} />
       <div className="game-content">
         <span class="circle"></span>
+        <span class="marker" hidden></span>
+        <span class="key-dropdown" hidden></span>
         <img src={level.imgURL} alt="" className="game-level-img" />
       </div>
     </div>
