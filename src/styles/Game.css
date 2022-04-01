@@ -1,3 +1,7 @@
 .game-level-img {
   width: 100%;
 }
+
+.game-content {
+  cursor: none;
+}
