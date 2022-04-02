@@ -18,11 +18,8 @@ const cursor = () => {
   }
 
   function mouseUpHandler(e) {
-    circle.style.transform = "scale(1)";
-  }
-
-  function mouseDownHandler(e) {
-    circle.style.transform = "scale(1.5)";
+    // circle.style.transform = "scale(1)";
+    circle.style.borderColor = "white";
 
     toggleCursor(e);
     ensureValidDropdownPosition();
@@ -30,6 +27,11 @@ const cursor = () => {
     if (!marker.hidden) {
       setMarkerCoordsInPercent(e);
     }
+  }
+
+  function mouseDownHandler(e) {
+    // circle.style.transform = "scale(1.5)";
+    circle.style.borderColor = "gray";
   }
 
   // switch to/from cursor and dropdown

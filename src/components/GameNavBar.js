@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/GameNavBar.css";
 
-function GameNavBar({ level, remainingKeys }) {
+function GameNavBar({ level, remainingKeys, currentTime }) {
   return (
     <nav className="GameNavBar">
       <Link to="/" className="navbar-logo">
@@ -25,6 +26,7 @@ function GameNavBar({ level, remainingKeys }) {
             </div>
           );
         })}
+        <div className="timer">{currentTime}</div>
       </div>
     </nav>
   );

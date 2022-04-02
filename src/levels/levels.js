@@ -4,7 +4,7 @@ import cat from "../images/cat.png";
 import drink from "../images/drink.png";
 
 import level2 from "../images/level2.jpeg";
-import lamp from "../images/lamp.png";
+import couch from "../images/couch.png";
 import plant from "../images/plant.png";
 import toilet from "../images/toilet.png";
 
@@ -39,7 +39,7 @@ const levels = [
     title: "Level 2",
     imgURL: level2,
     keys: [
-      { title: "Lamp", imgURL: lamp, id: 0 },
+      { title: "Couch", imgURL: couch, id: 0 },
       { title: "Plant", imgURL: plant, id: 1 },
       { title: "Toilet", imgURL: toilet, id: 2 },
     ],
