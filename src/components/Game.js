@@ -56,9 +56,14 @@ function Game({ username, setUsername }) {
             (entry) => entry.levelID === level.id
           );
           levelLeaderboard.sort((a, b) => (a.duration < b.duration ? -1 : 1));
-          setRank(
-            levelLeaderboard.findIndex((entry) => duration < entry.duration) + 1
-          );
+          let rank = 0;
+          for (let i = 0; i < levelLeaderboard.length; i++) {
+            rank = i + 1;
+            if (duration < levelLeaderboard[i].duration) {
+              break;
+            }
+          }
+          setRank(rank);
         });
       });
       setGameOver(() => true);
