@@ -12,7 +12,7 @@ import levels from "../levels/levels";
 
 function Leaderboard() {
   const functions = getFunctions();
-  connectFunctionsEmulator(functions, "localhost", 5001);
+  // connectFunctionsEmulator(functions, "localhost", 5001);
   const getLeaderboard = httpsCallable(functions, "getLeaderboard");
 
   const [leaderboard, setLeaderboard] = useState([]);

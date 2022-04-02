@@ -27,7 +27,7 @@ function Game({ username, setUsername }) {
   const [rank, setRank] = useState(null);
 
   const functions = getFunctions();
-  connectFunctionsEmulator(functions, "localhost", 5001);
+  // connectFunctionsEmulator(functions, "localhost", 5001);
   const checkIfCoordsCorrect = httpsCallable(functions, "checkIfCoordsCorrect");
   const startTimer = httpsCallable(functions, "startTimer");
   const getTime = httpsCallable(functions, "getTime");

@@ -13,7 +13,7 @@ function WinningPopup({ duration, username, setUsername, gameID, rank }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const functions = getFunctions();
-  connectFunctionsEmulator(functions, "localhost", 5001);
+  // connectFunctionsEmulator(functions, "localhost", 5001);
   const writeUsername = httpsCallable(functions, "writeUsername");
 
   function handleSubmitClick() {
