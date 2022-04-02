@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import millisToMinutesAndSeconds from "../scripts/timeConversion";
+import { millisToMinutesAndSeconds } from "../scripts/timeConversion";
 import {
   getFunctions,
   httpsCallable,
   connectFunctionsEmulator,
 } from "firebase/functions";
 
-function WinningPopup({ duration, username, setUsername, gameID }) {
+function WinningPopup({ duration, username, setUsername, gameID, rank }) {
   const time = millisToMinutesAndSeconds(duration);
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -17,7 +17,6 @@ function WinningPopup({ duration, username, setUsername, gameID }) {
   const writeUsername = httpsCallable(functions, "writeUsername");
 
   function handleSubmitClick() {
-    console.log("submitted");
     setHasSubmitted(true);
 
     const input = document.querySelector("#name-input");
@@ -32,7 +31,7 @@ function WinningPopup({ duration, username, setUsername, gameID }) {
     <div className="winning-popup">
       <div className="winning-title">You win!</div>
       <div className="winning-message">
-        <div>Your time was {time}</div> <div>You placed #</div>
+        <div>Your time was {time}</div> <div>You placed # {rank}</div>
       </div>
       <div className="submit-time">
         <label htmlFor="name-input" id="name-label">

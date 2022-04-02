@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import NavBar from "./NavBar";
+import LevelLeaderboard from "./LevelLeaderboard";
 import "../styles/Leaderboard.css";
 import {
   getFunctions,
@@ -7,6 +8,7 @@ import {
   connectFunctionsEmulator,
 } from "firebase/functions";
 import { useEffect, useState } from "react";
+import levels from "../levels/levels";
 
 function Leaderboard() {
   const functions = getFunctions();
@@ -28,7 +30,6 @@ function Leaderboard() {
           ...leaderboardObj,
           [entry.levelID]: [...arrAtLevelID, entry],
         };
-        console.log(leaderboardObj);
       }
       setLeaderboard(leaderboardArr);
     });
@@ -39,11 +40,20 @@ function Leaderboard() {
       <NavBar />
       <div className="leaderboard-content">
         <div className="leaderboard-title">Leaderboard</div>
-        {leaderboard.map((entry) => (
-          <div key={entry.gameID}>
-            {entry.username}: {entry.duration}
-          </div>
-        ))}
+        <div className="level-leaderboards-container">
+          {levels.map((level) => {
+            const levelEntries = leaderboard.filter(
+              (entry) => entry.levelID === level.id
+            );
+            return (
+              <LevelLeaderboard
+                levelID={level.id}
+                entries={levelEntries}
+                key={level.id}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

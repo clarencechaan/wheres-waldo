@@ -4,4 +4,9 @@ function millisToMinutesAndSeconds(millis) {
   return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 
-export default millisToMinutesAndSeconds;
+function millisToDateString(millis) {
+  const date = new Date(millis);
+  return date.toLocaleDateString("en-US");
+}
+
+export { millisToMinutesAndSeconds, millisToDateString };

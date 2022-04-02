@@ -67,7 +67,6 @@
   left: 50%;
   margin-top: calc(0px - var(--height) / 2); /* Negative half of height. */
   margin-left: calc(0px - var(--width) / 2); /* Negative half of width. */
-  /* background-color: rgba(45, 45, 45, 0.8); */
   background-color: rgb(33, 33, 33, 0.8);
   z-index: 1;
   border-radius: 40px;
@@ -125,6 +124,8 @@ button {
 
 .submit-btn.inactive {
   cursor: initial;
+  border-color: gray;
+  color: gray;
 }
 
 .btns-container {

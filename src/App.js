@@ -5,27 +5,31 @@ import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import { Routes, Route } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  getFunctions,
+  httpsCallable,
+  connectFunctionsEmulator,
+} from "firebase/functions";
 
 // Initialize Firebase
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);
 
-const db = getFirestore();
-// Add a new document in collection "cities"
-async function writeToFirestore() {
-  await setDoc(doc(db, "cities", "LA"), {
-    name: "New York City",
-    state: "NY",
-    country: "USA",
-  });
-}
-writeToFirestore();
-
 function App() {
   const [username, setUsername] = useState("Anonymous");
+
+  const functions = getFunctions();
+  connectFunctionsEmulator(functions, "localhost", 5001);
+  const fillDefaultLeaderboard = httpsCallable(
+    functions,
+    "fillDefaultLeaderboard"
+  );
+
+  // useEffect(() => {
+  //   fillDefaultLeaderboard();
+  // }, []);
 
   return (
     <div className="App">

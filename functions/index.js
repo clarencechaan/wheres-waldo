@@ -88,7 +88,23 @@ exports.getLeaderboard = functions.https.onCall(() => {
       });
       return resultArr;
     });
-
-  console.log("asdf");
   return leaderboard;
+});
+
+exports.fillDefaultLeaderboard = functions.https.onCall(() => {
+  for (let i = 0; i < 50; i++) {
+    const duration = Math.floor(Math.random() * 1000000);
+    const levelID = Math.floor(Math.random() * 5);
+    const username = "Player " + i;
+    db.collection("times").doc(`${i}`).set(
+      {
+        start: Date.now(),
+        end: 0,
+        duration,
+        levelID,
+        username,
+      },
+      { merge: true }
+    );
+  }
 });

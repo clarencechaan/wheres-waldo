@@ -11,7 +11,7 @@ import {
   connectFunctionsEmulator,
 } from "firebase/functions";
 import uniqid from "uniqid";
-import millisToMinutesAndSeconds from "../scripts/timeConversion";
+import { millisToMinutesAndSeconds } from "../scripts/timeConversion";
 
 let gameID;
 let timer;
@@ -24,6 +24,14 @@ function Game({ username, setUsername }) {
   const [gameOver, setGameOver] = useState(false);
   const [duration, setDuration] = useState();
   const [currentTime, setCurrentTime] = useState("0:00");
+  const [rank, setRank] = useState(null);
+
+  const functions = getFunctions();
+  connectFunctionsEmulator(functions, "localhost", 5001);
+  const checkIfCoordsCorrect = httpsCallable(functions, "checkIfCoordsCorrect");
+  const startTimer = httpsCallable(functions, "startTimer");
+  const getTime = httpsCallable(functions, "getTime");
+  const getLeaderboard = httpsCallable(functions, "getLeaderboard");
 
   useEffect(() => {
     cursor();
@@ -38,27 +46,27 @@ function Game({ username, setUsername }) {
   useEffect(() => {
     // win
     if (remainingKeys.length === 0) {
-      console.log("You win.");
       getTime(gameID).then((result) => {
-        setDuration(result.data);
-        console.log(result.data);
-        setCurrentTime(millisToMinutesAndSeconds(result.data));
+        const duration = result.data;
+        setDuration(duration);
+        setCurrentTime(millisToMinutesAndSeconds(duration));
+        return getLeaderboard().then((result) => {
+          const leaderboardArr = result.data;
+          const levelLeaderboard = leaderboardArr.filter(
+            (entry) => entry.levelID === level.id
+          );
+          levelLeaderboard.sort((a, b) => (a.duration < b.duration ? -1 : 1));
+          setRank(
+            levelLeaderboard.findIndex((entry) => duration < entry.duration) + 1
+          );
+        });
       });
       setGameOver(() => true);
       clearInterval(timer);
     }
   }, [remainingKeys]);
 
-  const functions = getFunctions();
-  connectFunctionsEmulator(functions, "localhost", 5001);
-  const checkIfCoordsCorrect = httpsCallable(functions, "checkIfCoordsCorrect");
-  const startTimer = httpsCallable(functions, "startTimer");
-  const getTime = httpsCallable(functions, "getTime");
-
   function handleKeySelected(key) {
-    console.log("key Selected");
-    console.log(markerCoordsInPercent);
-
     const reqObj = {
       xPercent: markerCoordsInPercent.xPercent,
       yPercent: markerCoordsInPercent.yPercent,
@@ -68,7 +76,6 @@ function Game({ username, setUsername }) {
 
     checkIfCoordsCorrect(reqObj).then((result) => {
       const reqIsCorrect = result.data;
-      console.log(reqIsCorrect);
       if (reqIsCorrect) {
         setRemainingKeys((prevRemainingKeys) => {
           const index = prevRemainingKeys.indexOf(key);
@@ -89,6 +96,7 @@ function Game({ username, setUsername }) {
           username={username}
           setUsername={setUsername}
           gameID={gameID}
+          rank={rank}
         />
       ) : null}
       <GameNavBar
