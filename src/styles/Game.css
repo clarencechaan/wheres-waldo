@@ -85,8 +85,46 @@
 }
 
 .winning-message {
-  font-size: 50px;
+  font-size: 35px;
   text-align: center;
+}
+
+.submit-time {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+#name-label {
+  font-size: 30px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.submit-btn,
+#name-input,
+.winning-popup-btn {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  font-family: inherit;
+}
+
+.submit-btn,
+#name-input {
+  height: 40px;
+  width: 120px;
+  border-radius: 8px;
+  font-size: 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.submit-btn.inactive {
+  cursor: initial;
 }
 
 .btns-container {
@@ -95,18 +133,19 @@
 }
 
 .winning-popup-btn {
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
   height: 70px;
   width: 180px;
   margin-top: 16px;
   border-radius: 16px;
-  font-family: inherit;
   font-size: 30px;
-  cursor: pointer;
 }
 
-.winning-popup-btn:hover {
+.winning-popup-btn:hover,
+.submit-btn.active:hover {
   background-color: rgba(255, 255, 255, 0.15);
+}
+
+.timer {
+  margin-left: 40px;
+  font-size: 30px;
 }

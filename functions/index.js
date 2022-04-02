@@ -29,19 +29,18 @@ exports.checkIfCoordsCorrect = functions.https.onCall((data) => {
   return result;
 });
 
-exports.startTimer = functions.https.onCall((data) => {
-  let gameID = data;
+exports.startTimer = functions.https.onCall(({ gameID, levelID }) => {
   let start = Date.now();
   db.collection("times").doc(gameID).set(
     {
-      start: start,
+      start,
+      levelID,
     },
     { merge: true }
   );
 });
 
-exports.getTime = functions.https.onCall((data) => {
-  let gameID = data;
+exports.getTime = functions.https.onCall((gameID) => {
   const end = Date.now();
   const duration = db
     .collection("times")
@@ -56,8 +55,8 @@ exports.getTime = functions.https.onCall((data) => {
       const duration = end - data.start;
       db.collection("times").doc(gameID).set(
         {
-          end: end,
-          duration: duration,
+          end,
+          duration,
         },
         { merge: true }
       );
@@ -65,4 +64,31 @@ exports.getTime = functions.https.onCall((data) => {
     });
 
   return duration;
+});
+
+exports.writeUsername = functions.https.onCall(({ gameID, username }) => {
+  db.collection("times").doc(gameID).set(
+    {
+      username: username,
+    },
+    { merge: true }
+  );
+});
+
+exports.getLeaderboard = functions.https.onCall(() => {
+  const leaderboard = db
+    .collection("times")
+    .where("username", "!=", null)
+    .get()
+    .then((querySnapshot) => {
+      let resultArr = [];
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        resultArr.push({ ...doc.data(), gameID: doc.id });
+      });
+      return resultArr;
+    });
+
+  console.log("asdf");
+  return leaderboard;
 });

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/Game.css";
@@ -15,7 +16,7 @@ import millisToMinutesAndSeconds from "../scripts/timeConversion";
 let gameID;
 let timer;
 
-function Game() {
+function Game({ username, setUsername }) {
   const location = useLocation();
   const level = location.state;
 
@@ -27,16 +28,12 @@ function Game() {
   useEffect(() => {
     cursor();
     gameID = uniqid();
-    startTimer(gameID);
+    startTimer({ gameID, levelID: level.id });
     const start = Date.now();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     timer = setInterval(() => {
       setCurrentTime(millisToMinutesAndSeconds(Date.now() - start), 1000);
     });
-
     return () => clearInterval(timer);
-
-    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     // win
@@ -50,7 +47,6 @@ function Game() {
       setGameOver(() => true);
       clearInterval(timer);
     }
-    // eslint-disable-next-line
   }, [remainingKeys]);
 
   const functions = getFunctions();
@@ -87,7 +83,14 @@ function Game() {
 
   return (
     <div className="Game">
-      {gameOver ? <WinningPopup duration={duration} /> : null}
+      {gameOver ? (
+        <WinningPopup
+          duration={duration}
+          username={username}
+          setUsername={setUsername}
+          gameID={gameID}
+        />
+      ) : null}
       <GameNavBar
         level={level}
         remainingKeys={remainingKeys}

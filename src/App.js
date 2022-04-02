@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { getFirebaseConfig } from "./firebase-config.js";
+import { useState } from "react";
 
 // Initialize Firebase
 const firebaseAppConfig = getFirebaseConfig();
@@ -24,11 +25,16 @@ async function writeToFirestore() {
 writeToFirestore();
 
 function App() {
+  const [username, setUsername] = useState("Anonymous");
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home levels={levels} />} />
-        <Route path="/game" element={<Game />} />
+        <Route
+          path="/game"
+          element={<Game username={username} setUsername={setUsername} />}
+        />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </div>
