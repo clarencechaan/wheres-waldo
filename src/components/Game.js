@@ -56,10 +56,10 @@ function Game({ username, setUsername }) {
             (entry) => entry.levelID === level.id
           );
           levelLeaderboard.sort((a, b) => (a.duration < b.duration ? -1 : 1));
-          let rank = 0;
+          let rank = levelLeaderboard.length + 1;
           for (let i = 0; i < levelLeaderboard.length; i++) {
-            rank = i + 1;
             if (duration < levelLeaderboard[i].duration) {
+              rank = i + 1;
               break;
             }
           }

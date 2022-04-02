@@ -1,9 +1,12 @@
 const answerKey = require("./answerKey.json");
 const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-admin.initializeApp(functions.config().firebase);
+const Firestore = require("@google-cloud/firestore");
+const PROJECTID = "where-s-waldo-d6fd3";
 
-const db = admin.firestore();
+const db = new Firestore({
+  projectId: PROJECTID,
+  timestampsInSnapshots: true,
+});
 
 function calculateDistance(x1, x2, y1, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -83,7 +86,6 @@ exports.getLeaderboard = functions.https.onCall(() => {
     .then((querySnapshot) => {
       let resultArr = [];
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         resultArr.push({ ...doc.data(), gameID: doc.id });
       });
       return resultArr;
