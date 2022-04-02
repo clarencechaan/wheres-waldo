@@ -5,18 +5,13 @@ import "../styles/Game.css";
 import GameNavBar from "./GameNavBar";
 import WinningPopup from "./WinningPopup";
 import { cursor, markerCoordsInPercent } from "../scripts/cursor";
-import {
-  getFunctions,
-  httpsCallable,
-  connectFunctionsEmulator,
-} from "firebase/functions";
 import uniqid from "uniqid";
 import { millisToMinutesAndSeconds } from "../scripts/timeConversion";
 
 let gameID;
 let timer;
 
-function Game({ username, setUsername }) {
+function Game({ username, setUsername, funcs, leaderboard, setLeaderboard }) {
   const location = useLocation();
   const level = location.state;
 
@@ -26,17 +21,11 @@ function Game({ username, setUsername }) {
   const [currentTime, setCurrentTime] = useState("0:00");
   const [rank, setRank] = useState(null);
 
-  const functions = getFunctions();
-  // connectFunctionsEmulator(functions, "localhost", 5001);
-  const checkIfCoordsCorrect = httpsCallable(functions, "checkIfCoordsCorrect");
-  const startTimer = httpsCallable(functions, "startTimer");
-  const getTime = httpsCallable(functions, "getTime");
-  const getLeaderboard = httpsCallable(functions, "getLeaderboard");
-
   useEffect(() => {
+    window.scrollTo(0, 0);
     cursor();
     gameID = uniqid();
-    startTimer({ gameID, levelID: level.id });
+    funcs.startTimer({ gameID, levelID: level.id });
     const start = Date.now();
     timer = setInterval(() => {
       setCurrentTime(millisToMinutesAndSeconds(Date.now() - start), 1000);
@@ -46,27 +35,23 @@ function Game({ username, setUsername }) {
   useEffect(() => {
     // win
     if (remainingKeys.length === 0) {
-      getTime(gameID).then((result) => {
+      funcs.getTime(gameID).then((result) => {
         const duration = result.data;
         setDuration(duration);
         setCurrentTime(millisToMinutesAndSeconds(duration));
-        return getLeaderboard().then((result) => {
-          const leaderboardArr = result.data;
-          const levelLeaderboard = leaderboardArr.filter(
-            (entry) => entry.levelID === level.id
-          );
-          levelLeaderboard.sort((a, b) => (a.duration < b.duration ? -1 : 1));
-          let rank = levelLeaderboard.length + 1;
-          for (let i = 0; i < levelLeaderboard.length; i++) {
-            if (duration < levelLeaderboard[i].duration) {
-              rank = i + 1;
-              break;
-            }
+        const levelLeaderboard = leaderboard.filter(
+          (entry) => entry.levelID === level.id
+        );
+        let rank = levelLeaderboard.length + 1;
+        for (let i = 0; i < levelLeaderboard.length; i++) {
+          if (duration < levelLeaderboard[i].duration) {
+            rank = i + 1;
+            break;
           }
-          setRank(rank);
-        });
+        }
+        setRank(rank);
+        setGameOver(() => true);
       });
-      setGameOver(() => true);
       clearInterval(timer);
     }
   }, [remainingKeys]);
@@ -79,7 +64,7 @@ function Game({ username, setUsername }) {
       keyID: key.id,
     };
 
-    checkIfCoordsCorrect(reqObj).then((result) => {
+    funcs.checkIfCoordsCorrect(reqObj).then((result) => {
       const reqIsCorrect = result.data;
       if (reqIsCorrect) {
         setRemainingKeys((prevRemainingKeys) => {
@@ -102,6 +87,9 @@ function Game({ username, setUsername }) {
           setUsername={setUsername}
           gameID={gameID}
           rank={rank}
+          funcs={funcs}
+          setLeaderboard={setLeaderboard}
+          levelID={level.id}
         />
       ) : null}
       <GameNavBar

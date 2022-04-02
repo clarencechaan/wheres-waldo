@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { millisToMinutesAndSeconds } from "../scripts/timeConversion";
-import {
-  getFunctions,
-  httpsCallable,
-  connectFunctionsEmulator,
-} from "firebase/functions";
 
-function WinningPopup({ duration, username, setUsername, gameID, rank }) {
+function WinningPopup({
+  duration,
+  username,
+  setUsername,
+  gameID,
+  rank,
+  funcs,
+  setLeaderboard,
+  levelID,
+}) {
   const time = millisToMinutesAndSeconds(duration);
-
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
-  const functions = getFunctions();
-  // connectFunctionsEmulator(functions, "localhost", 5001);
-  const writeUsername = httpsCallable(functions, "writeUsername");
 
   function handleSubmitClick() {
     setHasSubmitted(true);
@@ -24,7 +23,15 @@ function WinningPopup({ duration, username, setUsername, gameID, rank }) {
     const user = input.value;
     setUsername(user);
 
-    writeUsername({ gameID, username: user });
+    funcs.writeUsername({ gameID, username: user });
+    setLeaderboard((prevLeaderboard) => {
+      const resultLeaderboard = [
+        ...prevLeaderboard,
+        { username: user, gameID, duration, start: Date.now(), levelID },
+      ];
+      resultLeaderboard.sort((a, b) => (a.duration < b.duration ? -1 : 1));
+      return resultLeaderboard;
+    });
   }
 
   return (
