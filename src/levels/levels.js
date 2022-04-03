@@ -1,27 +1,27 @@
-import level1 from "../images/level1.jpeg";
-import ps5controller from "../images/ps5controller.png";
-import cat from "../images/cat.png";
-import drink from "../images/drink.png";
+const level1 = "https://imgur.com/wt96wLX.jpg";
+const ps5controller = "https://imgur.com/zbVD2Is.png";
+const cat = "https://imgur.com/rxS0szf.png";
+const drink = "https://imgur.com/Ynh6en6.png";
 
-import level2 from "../images/level2.jpeg";
-import couch from "../images/couch.png";
-import plant from "../images/plant.png";
-import toilet from "../images/toilet.png";
+const level2 = "https://imgur.com/tLqq31A.jpg";
+const couch = "https://imgur.com/q1zRkxv.png";
+const plant = "https://imgur.com/3eaktFS.png";
+const toilet = "https://imgur.com/3o12Aa8.png";
 
-import level3 from "../images/level3.jpeg";
-import cactus from "../images/cactus.png";
-import coughingMan from "../images/coughing-man.png";
-import squirrel from "../images/squirrel.png";
+const level3 = "https://imgur.com/1hq6CzI.jpg";
+const cactus = "https://imgur.com/htxeO4W.png";
+const coughingMan = "https://imgur.com/PqhUOrv.png";
+const squirrel = "https://imgur.com/ruZdVBX.png";
 
-import level4 from "../images/level4.png";
-import turtle from "../images/turtle.png";
-import volcano from "../images/volcano.png";
-import wheel from "../images/wheel.png";
+const level4 = "https://imgur.com/p4B8Abq.jpg";
+const turtle = "https://imgur.com/2kGdExh.png";
+const volcano = "https://imgur.com/kLI5mKw.png";
+const wheel = "https://imgur.com/rTt4zB0.png";
 
-import level5 from "../images/level5.jpeg";
-import motorcyclist from "../images/motorcyclist.png";
-import mug from "../images/mug.png";
-import statue from "../images/statue.png";
+const level5 = "https://imgur.com/ARndM1B.jpg";
+const motorcyclist = "https://imgur.com/SiaNAYt.png";
+const mug = "https://imgur.com/c3Q92wt.png";
+const statue = "https://imgur.com/9tz2WSq.png";
 
 const levels = [
   {
